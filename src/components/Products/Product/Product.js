@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-// import { connect } from "react-redux";
+ //import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 // import {
 //   loadCurrentItem,
@@ -14,7 +14,9 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import * as actionTypes from  '../../../redux/action.js'; 
 import './Product.css'
+import { connect } from 'react-redux';
 const useStyles = makeStyles({
     root: {
       maxWidth: 345,
@@ -28,24 +30,26 @@ const useStyles = makeStyles({
 function Product2({ product, addToCart, loadCurrentItem }) {
   const history = useHistory();
     const classes = useStyles();
+
     const handleOnClick = ()=>{
-      // loadCurrentItem(product);
-      // history.push(`/product/${product.id}`)
-      history.push({
-        pathname:`/product/${product.id}`,
-        state: product
-      })
+       loadCurrentItem(product);
+       history.push(`/product/${product.id}`)
+       //console.log(history.push(`/product/${product.id}`))
+      // history.push({
+      //   pathname:`/product/${product.id}`,
+      //   state: product
+      // })
       
     }
     return (
-        <Card className={classes.root}>
+        <Card className = {classes.root}>
       
           <CardMedia
             className={classes.media}
             image={product.image}
             title={product.title}
-            
           />
+
           <CardContent className={classes.cardstyle}>
             <Typography gutterBottom variant="h5" component="h2">
               {product.title}
@@ -73,4 +77,19 @@ function Product2({ product, addToCart, loadCurrentItem }) {
     )
 }
 
-export default Product2
+//whenever you want to chanage state we use dispatch 
+
+
+
+
+const mapDispatchToProps = (dispatch) =>{
+  console.log(dispatch);
+  return {
+    
+    loadCurrentItem : (item) => dispatch({type : actionTypes.LOAD_CURRENT_ITEM, payload : {item:item}})  , 
+
+    addToCart : (id) => dispatch({type : actionTypes.ADD_TO_CART , payload : {id:id}})
+
+  }
+}
+export default connect(null,mapDispatchToProps)(Product2) 

@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
         position:"relative"
     }
   }));
+
 function Navbar2({cart=[]}) {
     const classes = useStyles();
     const [cartCount, setCartCount] = useState(0);
@@ -27,16 +28,17 @@ function Navbar2({cart=[]}) {
       let count = 0;
       cart.forEach((item) => {
         count += item.qty;
+        console.log(item.qty)
       });
   
       setCartCount(count);
     }, [cart, cartCount]);
   
+
     return (
         <div className={classes.root}>
         <AppBar style={{backgroundColor:'#badc58'}} position="static">
           <Toolbar className={classes.tool}>
-            
             <Typography variant="h6" className={classes.title}>
               <Link to='/' style={{color:'#2f3542'}}>
               Redux Shopping
@@ -51,4 +53,12 @@ function Navbar2({cart=[]}) {
     )
 }
 
-export default Navbar2;
+
+const mapStateToProps = (state) =>
+{
+  return {  
+    cart : state.cart 
+   }   
+   
+}
+export default  connect(mapStateToProps)(Navbar2);

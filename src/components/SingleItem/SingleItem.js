@@ -1,13 +1,16 @@
 import React from "react";
 import styles from "./SingleItem.css";
 import Button from '@material-ui/core/Button';
+//import shopReducer from "../../redux/shopReducer";
 import { connect } from "react-redux";
+import * as actionType from '../../redux/action.js'
 // import { addToCart } from "../../redux/Shopping/shopping-actions";
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 // const SingleItem = ({ current, addToCart }) => {
-const SingleItem = (props) => {
+const SingleItem = ({current , addToCart }) => {
   // console.log(props.location);
-  const current=props.location.state
+ //
+//const current=props.location.state
   return (
     <div className="s-container">
       <div className='img-container'>
@@ -21,19 +24,31 @@ const SingleItem = (props) => {
         <h1 className='p-name' >{current.title}</h1>
         <p style={{color:'#d63031', marginBottom:'5%'}}><span style={{color:'grey'}}>M.R.P.</span>&nbsp; ₹ {current.price}</p>
         <h4 style={{color:'#2d3436', marginBottom:'4%'}}>Description</h4>
-        <p className='description'>{current.description}</p>
-        
+        <p className='description'>{current.description}</p>  
 
-        <Button style={{backgroundColor:'#e67e22', marginTop:'5%'}}
-          onClick
+     <Button style={{backgroundColor:'#e67e22', marginTop:'5%'}}
+          onClick = {()=>addToCart(current.id)}
           className={styles.details__addBtn}
         >
           <ShoppingCartOutlinedIcon/>&nbsp;
           Add To Cart
-        </Button>
+      </Button>
       </div>
     </div>
   );
 };
 
-export default SingleItem;
+const mapStateToProps = (state) => {
+return {
+  current:state.currentItem 
+}
+}
+
+
+const mapDispatchToProps = (dispatch) => {
+
+  return {
+    addToCart : (id)=> dispatch({type:actionType.ADD_TO_CART, payload:{id: id}})
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(SingleItem);
