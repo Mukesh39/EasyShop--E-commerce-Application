@@ -41,7 +41,7 @@ function Navbar2({cart=[]}) {
           <Toolbar className={classes.tool}>
             <Typography variant="h6" className={classes.title}>
               <Link to='/' style={{color:'#2f3542'}}>
-              Redux Shopping
+              EasyShop
               </Link>
             </Typography>
             <Link to='/cart' style={{color:'#2f3542'}}>

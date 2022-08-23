@@ -2,10 +2,6 @@ import React from 'react'
 import { Link } from "react-router-dom";
  //import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-// import {
-//   loadCurrentItem,
-//   addToCart,
-// } from "../../../redux/Shopping/shopping-actions";
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -34,12 +30,6 @@ function Product2({ product, addToCart, loadCurrentItem }) {
     const handleOnClick = ()=>{
        loadCurrentItem(product);
        history.push(`/product/${product.id}`)
-       //console.log(history.push(`/product/${product.id}`))
-      // history.push({
-      //   pathname:`/product/${product.id}`,
-      //   state: product
-      // })
-      
     }
     return (
         <Card className = {classes.root}>
@@ -76,12 +66,7 @@ function Product2({ product, addToCart, loadCurrentItem }) {
       </Card>
     )
 }
-
-//whenever you want to chanage state we use dispatch 
-
-
-
-
+//whenever you want to chanage state we use dispatch
 const mapDispatchToProps = (dispatch) =>{
   console.log(dispatch);
   return {

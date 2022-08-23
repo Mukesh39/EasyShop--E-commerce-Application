@@ -8,7 +8,6 @@ import speaker from './speaker.jpg';
 //to access This than state.products.something 
 const initialState = 
 {
-
 products : [ 
     {
     id: 1,

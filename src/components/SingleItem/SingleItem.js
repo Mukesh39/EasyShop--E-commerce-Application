@@ -1,16 +1,11 @@
 import React from "react";
 import styles from "./SingleItem.css";
 import Button from '@material-ui/core/Button';
-//import shopReducer from "../../redux/shopReducer";
 import { connect } from "react-redux";
 import * as actionType from '../../redux/action.js'
-// import { addToCart } from "../../redux/Shopping/shopping-actions";
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 // const SingleItem = ({ current, addToCart }) => {
 const SingleItem = ({current , addToCart }) => {
-  // console.log(props.location);
- //
-//const current=props.location.state
   return (
     <div className="s-container">
       <div className='img-container'>
@@ -37,16 +32,12 @@ const SingleItem = ({current , addToCart }) => {
     </div>
   );
 };
-
 const mapStateToProps = (state) => {
 return {
   current:state.currentItem 
 }
 }
-
-
 const mapDispatchToProps = (dispatch) => {
-
   return {
     addToCart : (id)=> dispatch({type:actionType.ADD_TO_CART, payload:{id: id}})
   }

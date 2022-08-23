@@ -20,6 +20,7 @@ const Products = ({products}) => {
   );
 };
 
+
 const mapStateToProps = (state) =>{
   return{
      products:state.products
