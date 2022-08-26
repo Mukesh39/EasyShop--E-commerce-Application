@@ -5,6 +5,7 @@ import * as actionTypes from '../../../redux/action';
 //   adjustItemQty,
 //   removeFromCart,
 // } from "../../../redux/Shopping/shopping-actions";
+//trying to have the cart item exporting to be used in cart page 
 import './CartItem.css';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';

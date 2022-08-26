@@ -74,8 +74,9 @@ function Cart1({cart =[]}) {
       setTotalPrice(price);
     }, [cart]);
 
-    //I mentioned cart as deepndency array it means , useffect depends on array of cart items 
+    //I mentioned cart as deepndency array it means , useffect dependecu  array of cart items 
     //Any change in value of cart leads to update in Cart as well 
+    //Inlcudes all Basic function of Page 
   
     return (
         <>
@@ -89,8 +90,7 @@ function Cart1({cart =[]}) {
 
                          { cart.map((item) => (
                             <CartItem key={item.id} item={item} />
-                          )) }
-                    
+                          )) }   
                 </div>
             </div>
         <div className='details-c'>

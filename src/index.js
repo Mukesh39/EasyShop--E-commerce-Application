@@ -9,6 +9,7 @@ import store from "./redux/store";
 
 // Redux
 //import { Provider } from "react-redux";
+//Providing store and Used by all the Componenst
 
 ReactDOM.render(
   <Provider store = {store }>

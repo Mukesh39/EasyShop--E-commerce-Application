@@ -3,9 +3,10 @@ import * as actionTypes from './action.js'
 import smartphone from './smartphone.jpg';
 import book from './book.jpg';
 import speaker from './speaker.jpg';
-
 //initialState is State
 //to access This than state.products.something 
+//sameple data and Declaering intial state withs sample Data 
+
 const initialState = 
 {
 products : [ 
@@ -45,15 +46,18 @@ products : [
 currentItem : null ,
 cart : [] , 
 }
-
+//creatio of reducers which accepts of all the actions By UI give Data and upadte states 
+//Four UI functions Given Addto cart and update ,remove ,Load items 
 const shopReducer = (state=initialState ,action) => {
     switch(action.type)
      {
 
+//action add to cart   update the value     
     case actionTypes.ADD_TO_CART : 
         const item = state.products.find((product)=> product.id == action.payload.id) 
         const inCart = state.cart.find((product)=> product.id == action.payload.id ? true : false)
         return {
+          //updatinh the state 
              ...state, 
              cart : inCart ? 
                     state.cart.map((product) => product.id == action.payload.id ? { ...product  ,  qty : product.qty+1 } 
@@ -64,29 +68,28 @@ const shopReducer = (state=initialState ,action) => {
                     [ ...state.cart , {...item,qty:1 }]
                }
         
+        //action load items uand update the value 
+              case  actionTypes.LOAD_CURRENT_ITEM : 
+                    return { 
+                        ...state ,
+                        currentItem : action.payload.item
 
-    case  actionTypes.LOAD_CURRENT_ITEM : 
-     
-    return { 
-        ...state ,
-         currentItem : action.payload.item
-
-     } 
-
-
-     case actionTypes.UPDATE_QTY : 
-     return{
-         ...state,
-         cart : state.cart.map((product)=>product.id == action.payload.id?
-         {...product,qty:action.payload.qty} 
-         : product)
-     }
- case actionTypes.REMOVE_FROM_CART : 
-     return{
-         ...state,
-         cart : state.cart.filter((product)=>product.id!=action.payload.id)
-     }
-    default : return state
-} 
-}
+                    } 
+        //action update qty 
+                case actionTypes.UPDATE_QTY : 
+                      return{
+                          ...state,
+                          cart : state.cart.map((product)=>product.id == action.payload.id?
+                          {...product,qty:action.payload.qty} 
+                          : product)
+                      }
+        //action remove from the cart
+                case actionTypes.REMOVE_FROM_CART : 
+                      return{
+                          ...state,
+                          cart : state.cart.filter((product)=>product.id!=action.payload.id)
+                      }
+                      default : return state
+                  } 
+                  }
 export default shopReducer ;

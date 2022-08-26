@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import * as actionType from '../../redux/action.js'
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 // const SingleItem = ({ current, addToCart }) => {
+//how our single item will look like 
 const SingleItem = ({current , addToCart }) => {
   return (
     <div className="s-container">
@@ -32,11 +33,14 @@ const SingleItem = ({current , addToCart }) => {
     </div>
   );
 };
+
+//current and 
 const mapStateToProps = (state) => {
 return {
   current:state.currentItem 
 }
 }
+
 const mapDispatchToProps = (dispatch) => {
   return {
     addToCart : (id)=> dispatch({type:actionType.ADD_TO_CART, payload:{id: id}})

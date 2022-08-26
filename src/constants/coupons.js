@@ -1,3 +1,5 @@
+//useful for coupen discounts 
+
 export const coupons = {
     SAVE10:{
         name:'SAVE10',
