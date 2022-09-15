@@ -1,3 +1,12 @@
+#EasyShop- E-commerce-application
+
+Descriptions :- EasyShop is an E-commerce application based on React , React -Redux and Material-UI -
+aims to Shopping Online With Website
+
+Use of React , Redux , Material-UI , HTML-CSS , JavaScript,ES6
+
+Features :- Includes basic Features of selection ,view, Cart Summary and Payments details with coupen
+discounts. Database -Sample data given, Can be Scalable With Data from API
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
